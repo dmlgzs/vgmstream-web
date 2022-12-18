@@ -58,7 +58,7 @@ function setupDir(dir, callback){
 	return output
 }
 
-async function convertDir(dir, inputFilename, arrayBuffer, cmd){
+async function convertDir(dir, inputFilename, cmd, arrayBuffer){
 	var outputFilename = "/" + Math.random() + "output.wav"
 	
 	var output = setupDir(dir, () => vgmstream("-I", "-o", outputFilename, "-i", inputFilename, cmd))
