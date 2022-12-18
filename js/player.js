@@ -15,6 +15,8 @@ var logbox = document.getElementById("logbox")
 var logdropdown = document.getElementById("logdropdown")
 var log = document.getElementById("log")
 var fadeoverlay = document.getElementById("fadeoverlay")
+var cmd = document.getElementById("cmd")
+var audioIndex = document.getElementById("audioIndex")
 
 var jsDir = "js/"
 var dlfilename
@@ -165,7 +167,7 @@ function convertFile(file){
 async function convertDir(files, inputFilename){
 	fade(1, true)
 	try{
-		var response = await cliWorker.send("convertDir", files, inputFilename)
+		var response = await cliWorker.send("convertDir", files, inputFilename, audioIndex.value ? "-s " + audioIndex.value + " " + cmd.value : cmd.value)
 	}finally{
 		fade(0)
 	}

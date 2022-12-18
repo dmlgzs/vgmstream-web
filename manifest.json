@@ -1,21 +1,21 @@
 {
-	"id": "/vgmstream-web/",
+	"id": "/",
 	"name": "vgmstream-web",
 	"short_name": "vgmstream-web",
 	"description": "Listen to streamed video game audio files in your browser",
 	"icons": [{
-		"src": "/vgmstream-web/img/apple-touch-icon.png",
+		"src": "/img/apple-touch-icon.png",
 		"sizes": "180x180",
 		"type": "image/png"
 	}],
-	"start_url": "/vgmstream-web/",
+	"start_url": "/",
 	"display": "standalone",
 	"theme_color": "#5b9d2f",
 	"background_color": "#000",
 	"file_handlers": [{
-		"action": "/vgmstream-web/",
+		"action": "/",
 		"icons": [{
-			"src": "/vgmstream-web/img/audio-x-vgmstream.png",
+			"src": "/img/audio-x-vgmstream.png",
 			"sizes": "128x128",
 			"type": "image/png"
 		}],
@@ -291,7 +291,7 @@
 		}
 	}],
 	"share_target": {
-		"action": "/vgmstream-web/?share-target",
+		"action": "/?share-target",
 		"method": "POST",
 		"enctype": "multipart/form-data",
 		"params": {
