@@ -129,8 +129,8 @@ function deleteFile(name){
 }
 
 function vgmstream(...args){
-	stdoutBuffer = ""
-	stderrBuffer = ""
+	stdoutBuffer = []
+	stderrBuffer = []
 	var error
 	try{
 		callMain(args)
@@ -142,8 +142,8 @@ function vgmstream(...args){
 		stdout: stdoutBuffer,
 		stderr: stderrBuffer
 	}
-	stdoutBuffer = ""
-	stderrBuffer = ""
+	stdoutBuffer = []
+	stderrBuffer = []
 	if(error){
 		output.error = error
 	}
@@ -206,17 +206,17 @@ function cleanError(error){
 }
 
 var wasmUri
-var stdoutBuffer = ""
-var stderrBuffer = ""
+var stdoutBuffer = []
+var stderrBuffer = []
 var Module = {
 	preRun: () => {
 		FS.init(undefined, code => {
 			if(code !== null){
-				stdoutBuffer += String.fromCharCode(code)
+				stdoutBuffer.push(code)
 			}
 		}, code => {
 			if(code !== null){
-				stderrBuffer += String.fromCharCode(code)
+				stderrBuffer.push(code)
 			}
 		})
 	},

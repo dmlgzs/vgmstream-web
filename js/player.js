@@ -27,6 +27,28 @@ var locked = false
 var hashLock = false
 var dragTarget = null
 
+function bytesToString(arr) {
+	if (typeof arr === 'string') {
+		return arr;
+	}
+	var str = '', _arr = arr;
+	for (var i = 0; i < _arr.length; i++) {
+		var one = _arr[i].toString(2), v = one.match(/^1+?(?=0)/);
+		if (v && one.length == 8) {
+			var bytesLength = v[0].length;
+			var store = _arr[i].toString(2).slice(7 - bytesLength);
+			for (var st = 1; st < bytesLength; st++) {
+				store += _arr[st + i].toString(2).slice(2);
+			}
+			str += String.fromCharCode(parseInt(store, 2));
+			i += bytesLength - 1;
+		} else {
+			str += String.fromCharCode(_arr[i]);
+		}
+	}
+	return str;
+}
+
 function corsBridge(input){
 	var url = new URL("https://api.allorigins.win/raw")
 	url.searchParams.append("url", input)
@@ -179,7 +201,7 @@ function workerError(error){
 	if(error.type === "wasm"){
 		error.message = "The WebAssembly application crashed while decoding this file"
 	}else if(error.stderr){
-		error.message = "Could not convert file: {}".format(error.stderr.trim())
+		error.message = "Could not convert file: {}".format(bytesToString(error.stderr).trim())
 	}
 	alert(error.message)
 	return error
@@ -199,11 +221,11 @@ function insertAudio(response){
 		filenamebox.innerText = response.inputFilename
 		
 		var errors = []
-		var stderr = response.stderr.trim()
+		var stderr = bytesToString(response.stderr).trim()
 		if(stderr){
 			errors.push(stderr)
 		}
-		var streamInfo = response.stdout.trim().split("\n").map(input => {
+		var streamInfo = bytesToString(response.stdout).trim().split("\n").map(input => {
 			try{
 				return JSON.parse(input)
 			}catch(e){
