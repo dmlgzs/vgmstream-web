@@ -829,6 +829,21 @@ addEventListener("hashchange", event => {
 })
 
 if("serviceWorker" in navigator){
-	navigator.serviceWorker.register("service-worker.js")
+	navigator.serviceWorker.register("service-worker.js").then(registration => {	
+		registration.addEventListener("updatefound", () => {
+			var installingWorker = registration.installing
+			installingWorker.addEventListener("statechange", () => {
+				if(installingWorker.state === "installed"){
+					if(navigator.serviceWorker.controller){
+						// new update available
+						installingWorker.send("skipWaiting")
+					}
+				}
+			})
+		})
+	})
 }
+navigator.serviceWorker.addEventListener("controllerchange", () => {
+	location.reload()
+})
 addEventListener("beforeinstallprompt", event => {})
