@@ -37,9 +37,11 @@
 	<div id="audiobox">
 		<div id="filenamebox"></div>
 		<div><custom-audio id="audio" controls></custom-audio></div>
-		<div><input id="download" class="button" type="button" value="Download"></div>
-		<input type="checkbox" id="loop" name="loop" onclick="audio.loop = loop.checked">
-		<label for="loop">LOOP</label>
+		<div>
+			<input id="download" class="button" type="button" value="Download">
+			<input type="checkbox" id="loop" name="loop" onclick="audio.loop = loop.checked">
+			<label for="loop">LOOP</label>
+		</div>
 		<div id="logbox">
 			<a id="logdropdown" tabindex="0">vgmstream output</a>
 			<div id="log"></div>
