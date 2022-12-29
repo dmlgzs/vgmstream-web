@@ -1,4 +1,4 @@
-var version = "v22.12.29"
+var version = "v22.12.30"
 var wasmVersion = "wasm2"
 var shareTargetVersion = "share-target"
 
