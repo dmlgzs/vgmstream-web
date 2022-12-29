@@ -225,6 +225,8 @@ function insertAudio(response){
 		}else{
 			loop.checked = false
 			audio.loop = false
+			audio.loopStart = 0
+			audio.loopEnd = 0
 		}
 		outputTable(streamInfo, errors)
 		audiobox.style.display = "block"
