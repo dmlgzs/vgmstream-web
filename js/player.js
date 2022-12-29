@@ -17,6 +17,7 @@ var log = document.getElementById("log")
 var fadeoverlay = document.getElementById("fadeoverlay")
 var cmd = document.getElementById("cmd")
 var audioIndex = document.getElementById("audioIndex")
+var loop = document.getElementById("loop")
 
 var jsDir = "js/"
 var dlfilename
@@ -212,10 +213,12 @@ function insertAudio(response){
 		}).filter(Boolean)[0]
 		
 		if(streamInfo && streamInfo.loopingInfo){
+			loop.checked = true
 			audio.loop = true
 			audio.loopStart = streamInfo.loopingInfo.start / streamInfo.sampleRate
 			audio.loopEnd = streamInfo.loopingInfo.end / streamInfo.sampleRate
 		}else{
+			loop.checked = false
 			audio.loop = false
 		}
 		outputTable(streamInfo, errors)
