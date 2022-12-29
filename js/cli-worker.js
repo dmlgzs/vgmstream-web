@@ -26,9 +26,6 @@ async function messageEvent(data){
 			case "deleteFile":
 				output = deleteFile(...input)
 				break
-			case "skipWaiting":
-				self.skipWaiting()
-				break
 			default:
 				error = new Error("Unknown message subject")
 				break

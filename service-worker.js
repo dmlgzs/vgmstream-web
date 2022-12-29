@@ -1,4 +1,4 @@
-var version = "v22.09.29"
+var version = "v22.12.29"
 var wasmVersion = "wasm2"
 var shareTargetVersion = "share-target"
 
@@ -109,5 +109,10 @@ self.addEventListener("fetch", event => {
 		return event.respondWith(shareTarget(event))
 	}else if(request.url.startsWith(self.location.origin + "/") || request.url.startsWith(wasmDir)){
 		return event.respondWith(workerFetch(event))
+	}
+})
+self.addEventListener('message', event => {
+	if (event.data.action === 'skipWaiting') {
+	  self.skipWaiting()
 	}
 })

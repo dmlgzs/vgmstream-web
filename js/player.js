@@ -836,7 +836,7 @@ if("serviceWorker" in navigator){
 				if(installingWorker.state === "installed"){
 					if(navigator.serviceWorker.controller){
 						// new update available
-						installingWorker.send("skipWaiting")
+						installingWorker.send({ action: 'skipWaiting' })
 					}
 				}
 			})
