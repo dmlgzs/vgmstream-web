@@ -1,6 +1,6 @@
 "use strict"
 
-var wasmDir = "https://cdn.vgmstream.org/js/"
+var wasmDir = "https://vgmstream.org/web/"
 
 async function messageEvent(data){
 	var input = data.content
